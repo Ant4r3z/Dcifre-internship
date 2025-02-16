@@ -38,7 +38,7 @@ def test_create_empresa(mock_service):
     
     response = client.post("/empresas/", json=empresa_data.model_dump())
 
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert response.json()['nome'] == "Empresa Teste"
     assert response.json()['cnpj'] == "12345678000195"
     assert response.json()['telefone'] == "123456789"
@@ -99,5 +99,4 @@ def test_delete_empresa(mock_service):
 
     response = client.delete(f"/empresas/{empresa_id}")
 
-    assert response.status_code == 200
-    assert response.json() == {"message": "Empresa excluída com sucesso"}
+    assert response.status_code == 204

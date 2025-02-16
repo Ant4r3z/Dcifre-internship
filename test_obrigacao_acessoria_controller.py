@@ -34,7 +34,7 @@ def test_create_obrigacao_acessoria(mock_service):
     
     response = client.post("/obrigacoes/", json=obrigacao_data.model_dump())
     
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert response.json()['nome'] == "Obrigação Teste"
     assert response.json()['empresa_id'] == 1
 
@@ -87,5 +87,4 @@ def test_delete_obrigacao_acessoria(mock_service):
     
     response = client.delete(f"/obrigacoes/{obrigacao_id}")
     
-    assert response.status_code == 200
-    assert response.json() == {"message": "Obrigação acessória excluída com sucesso"}
+    assert response.status_code == 204

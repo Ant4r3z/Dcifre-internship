@@ -97,5 +97,5 @@ def test_delete_empresa(mocker):
     mock_delete_empresa.return_value = False
     with pytest.raises(HTTPException) as excinfo:
         delete_empresa(mock_db, empresa_id)
-    assert excinfo.value.status_code == 404
-    assert excinfo.value.detail == "Empresa não encontrada"
+    assert excinfo.value.status_code == 500
+    assert excinfo.value.detail == f"Erro ao excluir empresa com ID {empresa_id}"
